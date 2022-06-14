@@ -1,0 +1,7 @@
+.popup__image{
+  max-width: 100%;
+  max-height: calc(100% - 15px);
+  object-fit: fill;
+  padding: 0;
+  margin: 0;
+}

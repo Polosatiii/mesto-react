@@ -1,0 +1,23 @@
+.user__add-info{
+  width: 24px;
+  height: 24px;
+  border: 1px solid #FFFFFF;
+  background-color: transparent;
+  background-image: url(../../../images/edit_name-b.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  align-self: center;
+  cursor: pointer;
+  opacity: 1;
+}
+
+.user__add-info:hover{
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 1279px) {
+.user__add-info{
+  width: 18px;
+  height: 18px;
+  }
+}

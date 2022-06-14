@@ -1,0 +1,16 @@
+.user-gallery__like-b{
+  width: 20px;
+  height: 20px;
+  border: 0;
+  background-image: url(../../../images/like_b_dis.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20px 20px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.user-gallery__like-b:hover{
+  opacity: 0.5;
+
+}
