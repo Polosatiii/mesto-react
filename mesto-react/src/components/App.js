@@ -41,9 +41,10 @@ function App() {
   }
 
 
-
+  
   return (
-    <div className='page'>
+    <>
+      <div className='page'>
       <Header />
       <Main
         onEditProfile={handleEditProfileClick}
@@ -53,7 +54,7 @@ function App() {
       />
       <Footer />
 
-      <PopupWithForm isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} title="Редактировать профиль" name="popup_edit-profile">
+      <PopupWithForm isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} title="Редактировать профиль" name="popup_edit-profile" buttonTitle="Сохранить">
         <input type="text" autoComplete="name" autoCapitalize="words" className="popup__input" name="name" id="user-name" placeholder="Имя" minLength="2" maxLength="40" required />
         <p className="popup__error" id="user-name-error" />
 
@@ -77,9 +78,12 @@ function App() {
       <PopupWithForm onClose={closeAllPopups} title="Вы уверены?" name="delete-confirm" buttonTitle="Да" />
 
       <ImagePopup card={selectedCard} onClose={closeAllPopups} />
-    </div>
-  );
+      </div>
+    </>
+    
+  )
 }
+
 
 
 export default App;

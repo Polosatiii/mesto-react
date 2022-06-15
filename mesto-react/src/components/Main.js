@@ -22,14 +22,19 @@ class Main extends React.Component {
               userDescription: res.about,
               userAvatar: res.avatar,
             })
-          );
-    
+          )
+          .catch(console)
+        
+          
+
         api.getInitialCards()
           .then(res => 
             this.setState({
               cards: res
             })
-          );
+          )
+          .catch(console.log);
+          
       }
 
     
@@ -56,6 +61,8 @@ render() {
                 </ul>
             </section>
         </main>
+      
+        
     );
 }
 }
