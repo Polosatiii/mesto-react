@@ -16,6 +16,7 @@
 @import url(../src/blocks/user/__add-photo/user__add-photo.css);
 @import url(../src/blocks/user-gallery/user-gallery.css);
 @import url(../src/blocks/user-gallery/__delete-button/user-gallery__delete-button.css);
+@import url(../src/blocks/user-gallery/__delete-button/_visible/user-gallery__delete-button_visible.css);
 @import url(../src/blocks/user-gallery/__items/user-gallery__items.css);
 @import url(../src/blocks/user-gallery/__item/user-gallery__item.css);
 @import url(../src/blocks/user-gallery/__caption/user-gallery__caption.css);

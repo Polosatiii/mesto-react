@@ -1,60 +1,100 @@
 
-const cohortId = 'cohort-40';
-const token = '69ca4822-f2c1-499e-b251-d797f176bceb';
 
-const api = {
-  url: 'mesto.nomoreparties.co',
-  protocol: 'https://',
-  version: 'v1',
-};
 
 class Api {
-  constructor(options) {
-    this._baseUrl = options.baseUrl;
-    this._headers = options.headers;
+  constructor({ headers, baseUrl }) {
+    this._headers = headers;
+    this._baseUrl = baseUrl;
   }
 
-  _handleFetch = res =>
-    res.ok
-      ? res.json()
-      : Promise.reject(`Ошибка: ${res.status}`);
-
-  _customFetch(target, method, body) {
-    const options = {
-      headers: this._headers
-    };
-
-    if (method && (method !== 'GET')) {
-      options.method = method;
-      if (method !== 'DELETE') {
-        options.headers['Content-Type'] = 'application/json';
-      }
+  _checkResponse(res) {
+    if (res.ok) {
+      return res.json();
+    } else {
+      return Promise.reject(`${res.status} ${res.statusText}`);
     }
-
-    if (body) {
-      options.body = JSON.stringify(body);
-    }
-
-    return fetch(`${this._baseUrl}/${target}`, options)
-      .then(this._handleFetch);
   }
 
   getUserInfo() {
-    return this._customFetch('users/me');
+    const requestUrl = this._baseUrl + '/users/me';
+    return fetch(requestUrl, {
+      headers: this._headers,
+    }).then(this._checkResponse);
   }
 
   getInitialCards() {
-    return this._customFetch('cards');
+    const requestUrl = this._baseUrl + '/cards';
+    return fetch(requestUrl, {
+      headers: this._headers,
+    }).then(this._checkResponse);
   }
 
+  updateUserInfo(data) {
+    const requestUrl = this._baseUrl + '/users/me';
+    return fetch(requestUrl, {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify({
+        name: data.user_name,
+        about: data.user_job
+      })
+    }).then(this._checkResponse);
+  }
 
+  addNewCard(data) {
+    const requestUrl = this._baseUrl + '/cards';
+    return fetch(requestUrl, {
+      method: 'POST',
+      headers: this._headers,
+      body: JSON.stringify({
+        name: data.name,
+        link: data.link
+      })
+    }).then(this._checkResponse);
+  }
 
+  removeCard(data) {
+    const requestUrl = this._baseUrl + `/cards/${data._id}`;
+    return fetch(requestUrl, {
+      method: 'DELETE',
+      headers: this._headers,
+    }).then(this._checkResponse);
+  }
 
+  addCardLike(cardId) {
+    const requestUrl = this._baseUrl + `/cards/likes/${cardId}`;
+    return fetch(requestUrl, {
+      method: 'PUT',
+      headers: this._headers,
+    }).then(this._checkResponse);
+  }
+
+  deleteCardLike(cardId) {
+    const requestUrl = this._baseUrl + `/cards/likes/${cardId}`;
+    return fetch(requestUrl, {
+      method: 'DELETE',
+      headers: this._headers,
+    }).then(this._checkResponse);
+  }
+
+  updateProfileAvatar(data) {
+    const requestUrl = this._baseUrl + `/users/me/avatar`;
+    return fetch(requestUrl, {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar: data.avatar_link
+      })
+    }).then(this._checkResponse);
+  }
 }
 
-export default new Api({
-  baseUrl: `${api.protocol}${api.url}/${api.version}/${cohortId}`,
+export const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-40',
   headers: {
-    authorization: token
+    authorization: '69ca4822-f2c1-499e-b251-d797f176bceb',
+    'Content-Type': 'application/json'
   }
-}); 
+})
+
+export default api;
