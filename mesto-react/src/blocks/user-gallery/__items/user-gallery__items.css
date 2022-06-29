@@ -13,7 +13,7 @@
 
 }
 
-@media screen and (max-width: 1279px) {
+@media screen and (max-width: 880px) {
   .user-gallery__items{
     display: flex;
     flex-direction: column;

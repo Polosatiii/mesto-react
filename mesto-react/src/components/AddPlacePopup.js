@@ -34,10 +34,10 @@ function AddPlacePopup(props) {
       isOpen={props.isOpen}
       onCloseClick={props.onCloseClick}
       onClose={props.onClose}
-      name={'add'}
-      form={'placeData'}
-      title={'Новое место'}
-      buttonText={'Создать'}
+      name='add'
+      form='placeData'
+      title='Новое место'
+      buttonText='Создать'
       onSubmit={handleSubmit}
     >
       <input className="popup__input" id="place_name" name="name" type="text" placeholder="Название" minLength="2" maxLength="30" value={name} onChange={handleNameChange} required/>

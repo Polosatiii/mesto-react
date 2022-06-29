@@ -1,5 +1,5 @@
 .user-gallery__delete-button{
-  display: block;
+  display: none;
   padding: 0;
   border: none;
   font: inherit;

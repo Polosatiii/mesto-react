@@ -12,7 +12,7 @@
 
 }
 
-@media screen and (max-width: 1279px) {
+@media screen and (max-width: 880px) {
   .user__info{
     margin-top: 14px;
     max-width: 189px;

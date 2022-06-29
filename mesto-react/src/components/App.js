@@ -96,11 +96,11 @@ function App() {
     setSelectedCard(card);
   }
 
-  function handlePopupCloseClick(evt) {
-    if (evt.target.classList.contains('popup')) {
+  const handlePopupCloseClick = React.useCallback(e => {
+    if (e.target === e.currentTarget) {
       closeAllPopups();
     }
-  }
+  }, []);
 
   function closeAllPopups() {
     setIsProfilePopupOpened(false);
@@ -129,7 +129,6 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
-        <div className="page__content">
           <Header />
           <Main 
             onEditAvatar={handleEditAvatarClick}
@@ -169,7 +168,6 @@ function App() {
             onClose={closeAllPopups}
           />
         </div>
-      </div>
     </CurrentUserContext.Provider>
   );
 }

@@ -19,7 +19,7 @@
 }
 
 
-@media screen and (max-width: 1279px) {
+@media screen and (max-width: 880px) {
   .popup__close{
     background-size: 22px 22px;
     width: 22px;
