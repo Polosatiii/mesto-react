@@ -29,7 +29,7 @@ function Card(props) {
   }
 
 return (
-    <li className="user-gallery__item">
+  <li className="user-gallery__item">
     <button onClick={handleDeleteClick} type="button" className={cardDeleteButtonClassName} />
     <div className="user-gallery__photo-container">
     <img onClick={handleClick} src={props.link}  alt={props.name} className="user-gallery__photo" />
